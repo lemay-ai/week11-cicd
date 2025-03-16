@@ -3,10 +3,10 @@ name: Hugging Face AI Model CI/CD
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
     branches:
-      - main
+      - master
 
 jobs:
   test-in-container:
