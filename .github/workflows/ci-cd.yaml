@@ -1,0 +1,24 @@
+name: Hugging Face AI Model CI/CD
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test-in-container:
+    name: Run Model Test in Docker Container
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Build Docker Image
+        run: docker build -t ai-model-test .
+
+      - name: Run Test in Container
+        run: docker run --rm ai-model-test
